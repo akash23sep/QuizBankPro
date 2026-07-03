@@ -1,0 +1,179 @@
+/* Fix for Dashicons not appearing in the admin menu */
+#adminmenu .menu-icon-quizbank-pro div.wp-menu-image::before,
+#toplevel_page_quizbank-pro .wp-menu-image::before {
+	font-family: 'dashicons' !important;
+	content: '\f118' !important; /* Force learning icon matching dashicons-welcome-learn-with-us */
+}
+/* Base64 select drop-down arrow overrides */
+.qbp-quiz-layout-select {
+	background-image: none !important;
+	padding-right: 8px !important;
+}
+
+.form-wrap select#layout_style,
+.form-wrap select#quiz_topic_id,
+.form-wrap select#question_topic_id {
+	width: 100% !important;
+	max-width: 100% !important;
+	height: 38px !important;
+	padding: 6px 36px 6px 12px !important;
+	font-size: 14px !important;
+	line-height: 1.5 !important;
+	border: 1px solid #8c8f94 !important;
+	border-radius: 4px !important;
+	color: #2c3338 !important;
+	cursor: pointer !important;
+	
+	appearance: none !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	
+	background: #fff url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0iIzY0Njk3MCI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNS4yOTMgNy4yOTNhMSAxIDAgMDExLjQxNCAwTDEwIDEwLjU4NmwzLjI5My0zLjI5M2ExIDEgMCAxMTEuNDE0IDEuNDE0bC00IDRhMSAxIDAgMDEtMS40MTQgMGwtNC00YTEgMSAwIDAxMC0xLjQxNHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==") no-repeat right 12px center !important;
+	background-size: 16px 16px !important; /* Adjust based on your SVG size */
+}
+.form-wrap select#layout_style:hover,
+.form-wrap select#quiz_topic_id:hover,
+.form-wrap select#question_topic_id:hover {
+	border-color: #2271b1 !important;
+}
+
+.qbp-image-upload-field {
+	margin-bottom: 15px !important;
+}
+
+.qbp-file-input {
+	border: none !important;
+	padding: 4px 0 !important;
+	background: none !important;
+	box-shadow: none !important;
+}
+
+.qbp-preview-container {
+	margin-top: 10px;
+	display: none;
+}
+
+.qbp-preview-container.is-visible {
+	display: block;
+}
+
+.qbp-image-preview {
+	display: block;
+	max-width: 160px;
+	max-height: 120px;
+	border: 1px solid #ccd0d4;
+	border-radius: 4px;
+	padding: 4px;
+	background: #fff;
+	object-fit: cover;
+}
+
+.qbp-table-thumbnail {
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	border: 1px solid #ccd0d4;
+	border-radius: 4px;
+	background: #fff;
+	object-fit: cover;
+}
+
+.qbp-question-image-remove {
+	display: inline-block;
+	margin-top: 8px;
+}
+
+.qbp-answer-builder {
+	background: #f6f7f7;
+	padding: 15px;
+	border: 1px solid #ccd0d4;
+	margin-bottom: 15px;
+}
+
+.qbp-answer-builder-actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 10px;
+}
+
+.qbp-question-summary {
+	font-weight: 600;
+	color: #23282d;
+	font-size: 14px;
+}
+
+.qbp-question-hint {
+	margin-top: 4px;
+	color: #50575e;
+	font-size: 12px;
+}
+
+.qbp-inline-badge {
+	background: #e0e0e0;
+	padding: 2px 6px;
+	border-radius: 3px;
+	font-size: 11px;
+}
+
+.qbp-table-code {
+	font-size: 11px;
+}
+
+.qbp-thumbnail-placeholder {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 48px;
+	border: 1px dashed #ccd0d4;
+	border-radius: 4px;
+	background: #f6f7f7;
+	color: #a7aaad;
+	font-size: 24px;
+	line-height: 48px;
+}
+
+.qbp-sort-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	min-height: 24px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: #2c3338;
+	font: inherit;
+	font-weight: 600;
+	text-align: left;
+	cursor: pointer;
+}
+
+.qbp-sort-button:hover,
+.qbp-sort-button:focus {
+	color: #2271b1;
+}
+
+.qbp-sort-button:focus {
+	outline: 1px solid #2271b1;
+	outline-offset: 2px;
+}
+
+.qbp-sort-button:disabled {
+	cursor: wait;
+	opacity: 0.7;
+}
+
+.qbp-sort-arrow {
+	display: inline-block;
+	min-width: 10px;
+	color: #2271b1;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.qbp-questions-table.is-loading tbody,
+.qbp-quizzes-table.is-loading tbody {
+	opacity: 0.55;
+}
