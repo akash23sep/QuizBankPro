@@ -65,7 +65,7 @@ function qbp_process_question_topic_form() {
 		exit;
 	}
 
-	if ( strlen( $question_topic_name ) > 100 ) {
+	if ( mb_strlen( $question_topic_name, 'UTF-8' ) > 100 ) {
 		add_settings_error( 'qbp_messages', 'qbp_topic_too_long', __( 'Topic name cannot exceed 100 characters.', 'quizbank-pro' ), 'error' );
 		set_transient( 'settings_errors', get_settings_errors(), 30 );
 		wp_safe_redirect( $question_topics_url );

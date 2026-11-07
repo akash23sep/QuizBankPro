@@ -159,6 +159,16 @@ function qbp_process_question_form() {
 		return;
 	}
 
+	if ( strlen( $question_text ) > 65535 ) {
+		add_settings_error( 'qbp_messages', 'qbp_quest_text_too_long', __( 'Question text cannot exceed 65,535 bytes, including HTML markup.', 'quizbank-pro' ), 'error' );
+		return;
+	}
+
+	if ( strlen( $question_hint ) > 65535 ) {
+		add_settings_error( 'qbp_messages', 'qbp_quest_hint_too_long', __( 'Question hint cannot exceed 65,535 bytes, including HTML markup.', 'quizbank-pro' ), 'error' );
+		return;
+	}
+
 	if ( 'edit_question' === $question_action && empty( $question_id ) ) {
 		add_settings_error( 'qbp_messages', 'qbp_quest_missing', __( 'A valid question is required for editing.', 'quizbank-pro' ), 'error' );
 		return;
@@ -173,6 +183,11 @@ function qbp_process_question_form() {
 		$clean_answer = sanitize_text_field( wp_unslash( $answer_string ) );
 		if ( '' === $clean_answer ) {
 			continue;
+		}
+
+		if ( strlen( $clean_answer ) > 65535 ) {
+			add_settings_error( 'qbp_messages', 'qbp_quest_answer_too_long', __( 'Each answer cannot exceed 65,535 bytes.', 'quizbank-pro' ), 'error' );
+			return;
 		}
 
 		$is_correct_flag   = in_array( (string) $index, $correct_array, true ) ? 1 : 0;
@@ -233,6 +248,11 @@ function qbp_process_question_form() {
 		}
 
 		$question_image_url = wp_get_attachment_url( $attachment_id );
+	}
+
+	if ( $question_image_url && mb_strlen( $question_image_url, 'UTF-8' ) > 255 ) {
+		add_settings_error( 'qbp_messages', 'qbp_quest_image_url_too_long', __( 'Question image URL cannot exceed 255 characters.', 'quizbank-pro' ), 'error' );
+		return;
 	}
 
 	if ( 'add_question' === $question_action ) {

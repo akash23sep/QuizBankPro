@@ -64,6 +64,13 @@ function qbp_process_quiz_topic_form() {
 		exit;
 	}
 
+	if ( mb_strlen( $quiz_topic_name, 'UTF-8' ) > 100 ) {
+		add_settings_error( 'qbp_messages', 'qbp_quiz_topic_too_long', __( 'Quiz topic name cannot exceed 100 characters.', 'quizbank-pro' ), 'error' );
+		set_transient( 'settings_errors', get_settings_errors(), 30 );
+		wp_safe_redirect( $quiz_topics_url );
+		exit;
+	}
+
 	$current_time = current_time( 'mysql', 1 );
 
 	if ( $_POST['qbp_quiz_topic_action'] === 'edit_quiz_topic' ) {

@@ -174,6 +174,11 @@ function qbp_process_quiz_form() {
 		return;
 	}
 
+	if ( mb_strlen( $title, 'UTF-8' ) > 255 ) {
+		add_settings_error( 'qbp_messages', 'qbp_quiz_title_too_long', __( 'Quiz title cannot exceed 255 characters.', 'quizbank-pro' ), 'error' );
+		return;
+	}
+
 	global $wpdb;
 	$table_name        = $wpdb->prefix . 'qbp_quizzes';
 	$table_quiz_topics = $wpdb->prefix . 'qbp_quiz_topics';
